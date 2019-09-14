@@ -22,8 +22,11 @@ class Home extends Component {
               <div className="col s12 input-field">
                 <i className="material-icons prefix">textsms</i>
                 <input type="text" id="rapidAddress" size="100" placeholder="Type in address here" className="autocomplete" />
-                <p className="right">Address Type Ahead lookup API above is powered by  
-                  <a href="https://harmonyrightaddress.com" target="_blank" rel="noopener noreferrer">Harmony RightAddress</a> 
+                <p className="right">
+                  Address Type Ahead lookup API above is powered by
+                  <a href="https://harmonyrightaddress.com" target="_blank" rel="noopener noreferrer" >
+                    <img className="responsive-img" src="HARMONYRightAddressSmall.png" alt="Harmony RightAddress"/>
+                  </a> 
                 </p>
               </div>
             </div>
