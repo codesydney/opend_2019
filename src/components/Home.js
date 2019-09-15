@@ -23,7 +23,7 @@ class Home extends Component {
                 <i className="material-icons prefix">textsms</i>
                 <input type="text" id="rapidAddress" size="100" placeholder="Type in address here" className="autocomplete" />
                 <p className="right">Address Type Ahead lookup API above is powered by  
-                  <a href="https://harmonyrightaddress.com" target="_blank" rel="noopener noreferrer">Harmony RightAddress</a> 
+                  <a href="https://harmonyrightaddress.com" target="_blank" rel="noopener noreferrer"></a>
                 </p>
               </div>
             </div>
