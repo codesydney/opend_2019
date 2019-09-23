@@ -20,7 +20,7 @@ class Home extends Component {
               </div>
             </div>
 
-            <div className="row flex">
+            <div className="row">
               <div className="col s12 input-field">
                 <i className="material-icons prefix">textsms</i>
                 <input type="text" id="rapidAddress" size="100" placeholder="Type in address here" className="autocomplete" />
