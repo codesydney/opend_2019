@@ -2,8 +2,12 @@ import React, {Component} from 'react';
 //import { connect } from 'react-redux'
 
 import HomeMap from './HomeMap';
+import { AutoCompleteAddress } from './AutoCompleteAddress';
 
 class Home extends Component {
+
+  componentDidMount() {
+  }
   
   render() {
     return (
@@ -32,6 +36,8 @@ class Home extends Component {
                 </p>
               </div>
             </div>
+
+            <AutoCompleteAddress />
 
             <div className="row">
               <div className="col s12">
@@ -75,7 +81,7 @@ class Home extends Component {
               </div>
 
               <div className="col s12 m6 l6">
-                <HomeMap />
+                <HomeMap name="HomeMap" lat="-33.8688" lng="151.2093" zoom="16" />
               </div>
 
             </div>

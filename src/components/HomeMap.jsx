@@ -4,10 +4,13 @@ import { Map, TileLayer, Marker } from "react-leaflet";
 export default class HomeMap extends React.Component {
  constructor(props) {
    super(props);
+   console.log(props.lat);
+   console.log(props.lng);
+   console.log(props.zoom);
    this.state = {
-     lat: -33.8688,
-     lng: 151.2093,
-     zoom: 16
+     lat: props.lat, //-33.8688,
+     lng: props.lng, //151.2093,
+     zoom: props.zoom //16
    };
  }
 
