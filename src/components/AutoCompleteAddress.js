@@ -48,9 +48,11 @@ export class AutoCompleteAddress extends React.Component {
             <div className="row">
               <div className="col s12 input-field">
                 <i className="material-icons prefix">textsms</i>
+                
                 <input type="text" id="rapidAddress" size="100" placeholder="Type in address here" className="autocomplete" 
                 ref={input => this.search = input}
                 onChange = {this.handleInputChange}/>
+
                 <AutoCompleteSuggestions results={this.state.results} />
                 <p className="right">
                   Address Type Ahead lookup API is powered by

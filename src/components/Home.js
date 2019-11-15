@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 //import { connect } from 'react-redux'
+import AutoComplete from './AutoComplete';
 
 import HomeMap from './HomeMap';
-import { AutoCompleteAddress } from './AutoCompleteAddress';
+//import { AutoCompleteAddress } from './AutoCompleteAddress';
 
 class Home extends Component {
 
@@ -37,7 +38,7 @@ class Home extends Component {
               </div>
             </div>
 
-            <AutoCompleteAddress />
+            <AutoComplete />
 
             <div className="row">
               <div className="col s12">
