@@ -1,4 +1,6 @@
-import React from "react";
+import React, { Fragment } from "react";
+import { TextField, Button} from "@material-ui/core";
+import SendIcon from "@material-ui/icons/Send";
 
 export default class HomeInfo extends React.Component {
   constructor(props) {
@@ -13,38 +15,107 @@ export default class HomeInfo extends React.Component {
   render() {
     const position = [this.state.lat, this.state.lng];
     return (
-              <div>
-                <label>GNAF PID</label>
-                <input id="HRA_ID" type="text" className="validate" readOnly="readonly" name="HRA_ID" placeholder="ID (DPID or GNAF PID)" size="60" />
-                <label>Subdwelling</label>
-                <input type="text" className="validate" readOnly="readonly" size="60" id="flatNumber"/>
-                <label>Street number</label>
-                <input type="text" className="validate" readOnly="readonly" size="60" id="streetNumber"/>
-                <label>Street name</label>
-                <input type="text" className="validate" readOnly="readonly" size="60" id="streetName"/>
-                <label>Street type</label>
-                <input type="text" className="validate" readOnly="readonly" size="60" id="streetType"/>
-                <label>Suburb</label>
-                <input type="text" className="validate" readOnly="readonly" size="60" id="suburb"/>
-                <label>State</label>
-                <input type="text" className="validate" readOnly="readonly" size="60" id="state"/>
-                <label>Postcode</label>
-                <input type="text" className="validate" readOnly="readonly" size="60" id="postcode"/>
-                <label>{this.state.lng}</label>
-                <input type="text" className="validate" readOnly="readonly" size="60" id="longitude"/>
-                <label>{this.state.lat}</label>
-                <input type="text" className="validate" readOnly="readonly" size="60" id="latitude"/>
+      <Fragment>
+        <form>
+          <TextField
+            id="HRA_ID"
+            label="GNAF PID"
+            value="ID (DPID or GNAF PID)"
+            disabled
+            fullWidth
+            InputLabelProps={{ shrink: true }}
+          />
+          <br />
+          <TextField
+            id="flatNumber"
+            label="Subdwelling"
+            disabled
+            fullWidth
+            InputLabelProps={{ shrink: true }}
+          />
+          <br />
+          <TextField
+            id="streetNumber"
+            label="Street number"
+            disabled
+            fullWidth
+            InputLabelProps={{ shrink: true }}
+          />
+          <br />
+          <TextField
+            id="streetName"
+            label="Street name"
+            disabled
+            fullWidth
+            InputLabelProps={{ shrink: true }}
+          />
+          <br />
+          <TextField
+            id="streetType"
+            label="Street type"
+            disabled
+            fullWidth
+            InputLabelProps={{ shrink: true }}
+          />
+          <br />
+          <TextField
+            id="suburb"
+            label="Suburb"
+            disabled
+            fullWidth
+            InputLabelProps={{ shrink: true }}
+          />
+          <br />
+          <TextField
+            id="state"
+            label="State"
+            disabled
+            fullWidth
+            InputLabelProps={{ shrink: true }}
+          />
+          <br />
+          <TextField
+            id="postcode"
+            label="Postcode"
+            disabled
+            fullWidth
+            InputLabelProps={{ shrink: true }}
+          />
+          <br />
+          <TextField
+            id="longitude"
+            label="Longitude"
+            disabled
+            fullWidth
+            InputLabelProps={{ shrink: true }}
+          />
+          <br />
+          <TextField
+            id="latitude"
+            label="Latitude"
+            disabled
+            fullWidth
+            InputLabelProps={{ shrink: true }}
+          />
 
-                <form name="getReportForm" method="POST" action="\report">
-                    <input type="hidden" name="fullAddress" />
-                    <input type="hidden" name="postcode" />
-                    <input type="hidden" name="longitude" />
-                    <input type="hidden" name="latitude" />
-                    <button type="submit" className="btn waves-effect waves-light" value="Get report" name="btn_submit">Report
-                      <i className="material-icons right">send</i>
-                    </button>
-                </form>
-              </div>
+        </form>
+        <br />
+
+        <form name="getReportForm" method="POST" action="\report">
+          <input type="hidden" name="fullAddress" />
+          <input type="hidden" name="postcode" />
+          <input type="hidden" name="longitude" />
+          <input type="hidden" name="latitude" />
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            endIcon={<SendIcon />}
+          >
+            Report
+          </Button>
+        </form>
+      </Fragment>
 
     );
   }

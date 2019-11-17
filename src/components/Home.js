@@ -12,7 +12,8 @@ import HomeInfo from "./HomeInfo";
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    padding: "100px"
+    padding: 20,
+    marginTop: 100
   },
   paper: {
     padding: theme.spacing(2),
