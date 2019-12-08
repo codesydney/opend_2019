@@ -13,7 +13,6 @@ export class AutoCompleteAddress extends React.Component {
     results: []
   }
 
-
   handleInputChange = () => {
     this.setState({
       query: this.search.value
@@ -22,46 +21,40 @@ export class AutoCompleteAddress extends React.Component {
         if (this.state.query.length % 2 === 0) {
           this.getInfo()
         }
-      } 
+      }
     })
   }
 
   getInfo = () => {
-     fetchJsonp(`${API_URL}&fullAddress=${this.state.query}`, {
+    fetchJsonp(`${API_URL}&fullAddress=${this.state.query}`, {
       jsonpCallbackFunction: 'jsonCallback',
     })
-    .then((response) => {
-      return response.json()
-    }).then((json) => {
-      this.setState({
-        results: json.payload
+      .then((response) => {
+        return response.json()
+      }).then((json) => {
+        this.setState({
+          results: json.payload
+        })
+        console.log('parsed json', json)
+      }).catch((ex) => {
+        console.log('parsing failed', ex)
       })
-      console.log('parsed json', json)
-    }).catch((ex) => {
-      console.log('parsing failed', ex)
-    })
   }
 
- render() {
-   const position = [this.state.lat, this.state.lng];
-   return (
-            <div className="row">
-              <div className="col s12 input-field">
-                <i className="material-icons prefix">textsms</i>
-                
-                <input type="text" id="rapidAddress" size="100" placeholder="Type in address here" className="autocomplete" 
-                ref={input => this.search = input}
-                onChange = {this.handleInputChange}/>
-
-                <AutoCompleteSuggestions results={this.state.results} />
-                <p className="right">
-                  Address Type Ahead lookup API is powered by
-                  <a href="https://harmonyrightaddress.com" target="_blank" rel="noopener noreferrer" >
-                    <img className="responsive-img" src="HARMONYRightAddressSmall.png" alt="Harmony RightAddress"/>
-                  </a> 
-                </p>
-              </div>
-            </div>
-   );
- }
+  render() {
+    const position = [this.state.lat, this.state.lng];
+    return (
+      <form>
+      
+        <input
+          id="rapidAddress" 
+          size="100"
+          placeholder="Type in address here"
+          ref={input => this.search = input}
+          onChange={this.handleInputChange}
+        />
+        <AutoCompleteSuggestions results={this.state.results} />
+      </form>
+    );
+  }
 }

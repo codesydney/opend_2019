@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 //import { connect } from 'react-redux'
-import AutoComplete from './AutoComplete';
+import { AutoCompleteAddress } from './AutoCompleteAddress';
+import MyAutoComplete from './MyAutoComplete';
 
 import HomeMap from './HomeMap';
-//import { AutoCompleteAddress } from './AutoCompleteAddress';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Paper, Typography, Box, CardMedia, Card, CardContent } from '@material-ui/core';
 import EditIcon from "@material-ui/icons/Edit";
@@ -63,15 +63,21 @@ export default function Home() {
               </a>
             </Typography>
 
+            <AutoCompleteAddress />
+            <br />
+            <MyAutoComplete />
+
           </Paper>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={4}>
           <Paper className={classes.paper}>
             <HomeInfo />
           </Paper>
         </Grid>
-        <Grid item xs={12} md={6}>
-          <Paper className={classes.paper}>xs=6</Paper>
+        <Grid item xs={12} md={8}>
+          <Paper className={classes.paper}>
+            <HomeMap name="HomeMap" lat="-33.8688" lng="151.2093" zoom="16" />
+          </Paper>
         </Grid>
       </Grid>
     </div>
