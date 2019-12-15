@@ -9,7 +9,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 //import axios from "axios";
 import fetchJsonp from "fetch-jsonp";
 
-const API_URL = "https://preview-hosted.mastersoftgroup.com/harmony/rest/au/address?callback=jsonCallback&sourceOfTruth=GNAF&transactionID=a53d240365e6b75d65f5bf70d951289f&Authorization=Basic%20YWx1c2VyOlBselhpV3hxVUd4R094NXIycFNjamUyUWllYUV4YlY4&state=";
+const API_URL = "https://preview-hosted.mastersoftgroup.com/harmony/rest/au/address?sourceOfTruth=GNAF&transactionID=a53d240365e6b75d65f5bf70d951289f&Authorization=Basic%20YWx1c2VyOlBselhpV3hxVUd4R094NXIycFNjamUyUWllYUV4YlY4&state=";
+//const API_URL = "https://preview-hosted.mastersoftgroup.com/harmony/rest/au/address?callback=FRED&sourceOfTruth=GNAF&transactionID=a53d240365e6b75d65f5bf70d951289f&Authorization=Basic%20YWx1c2VyOlBselhpV3hxVUd4R094NXIycFNjamUyUWllYUV4YlY4&state=";
 
 function renderSuggestion(suggestionProps) {
   const {
@@ -25,14 +26,14 @@ function renderSuggestion(suggestionProps) {
   return (
     <MenuItem
       {...itemProps}
-      key={suggestion.objectID}
+      key={index}
       selected={isHighlighted}
       component="div"
       style={{
         fontWeight: isSelected ? 500 : 400
       }}
     >
-      {suggestion.title}
+      {suggestion.fullAddress}
     </MenuItem>
   );
 }
@@ -86,17 +87,21 @@ export default function MyAutoComplete() {
 
   const emptyList = [];
   const [data, setData] = useState(emptyList);
-  //const [query, setQuery] = useState("redux");
+  const [query, setQuery] = useState("redux");
   const [url, setUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [finalAddress, setFinalAddress] = useState("");
 
   const getSuggestions = (value, { showEmpty = false } = {}) => {
+    console.log("getSuggestions", data);
     return data;
   };
 
   const handleInputChange = event => {
+
     const query = event.target.value;
+    setQuery(query);
     console.log("query=", event.target.value);
     if (query.length >= 3) {
       setUrl(`${API_URL}&fullAddress=${query}`);
@@ -124,18 +129,38 @@ export default function MyAutoComplete() {
     );
   };
 
-  useEffect(() => {
+  const handleClick = (event) => {
+    console.log("final query = ", query);
+    setFinalAddress(query);
+    console.log("final address = ", finalAddress);  
+  }
+
+  /*
+    useEffect(() => {
     console.log("url=",url);
     if (url === "") { return; }
     fetchJsonp(url, {
-      jsonpCallbackFunction: 'jsonCallback',
+      jsonpCallbackFunction: 'FRED',
     })
       .then((response) => {
         return response.json()
       }).then((json) => {
-        setData({
-          results: json.payload
-        })
+        setData(json.payload)
+        console.log('parsed json', json)
+      }).catch((ex) => {
+        console.log('parsing failed', ex)
+      })
+  }, [url]);
+
+*/
+  useEffect(() => {
+    console.log("url=",url);
+    if (url === "") { return; }
+    fetchJsonp(url)
+      .then((response) => {
+        return response.json()
+      }).then((json) => {
+        setData(json.payload)
         console.log('parsed json', json)
       }).catch((ex) => {
         console.log('parsing failed', ex)
@@ -191,13 +216,14 @@ export default function MyAutoComplete() {
               <div {...getMenuProps()}>
                 {isOpen ? (
                   <Paper className={classes.paper} square>
-                    {getSuggestions(inputValue).map((suggestion, index) =>
+                    { 
+                      getSuggestions(inputValue).map((suggestion, index) =>
                       renderSuggestion({
                         suggestion,
                         index,
-                        itemProps: getItemProps({ item: suggestion.title }),
+                        itemProps: getItemProps({ item: suggestion.fullAddress }),
                         highlightedIndex,
-                        selectedItem
+                        selectedItem 
                       })
                     )}
                   </Paper>
@@ -207,6 +233,9 @@ export default function MyAutoComplete() {
           );
         }}
       </Downshift>
+      <button type="button" onClick={handleClick}>
+        Search
+      </button>
     </div>
   );
 }

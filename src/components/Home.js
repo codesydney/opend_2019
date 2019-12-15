@@ -54,7 +54,7 @@ export default function Home() {
             </Typography>
 
             <EditIcon />
-            <input type="text" id="rapidAddress" size="100" placeholder="Type in address here" className="autocomplete" />
+            {/* <!input type="text" id="rapidAddress" size="100" placeholder="Type in address here" className="autocomplete" />
 
             <Typography variant="body1" align="right">
               Address Type Ahead lookup API is powered by
@@ -64,8 +64,16 @@ export default function Home() {
             </Typography>
 
             <AutoCompleteAddress />
-            <br />
+            <br /> */}
             <MyAutoComplete />
+            <Typography variant="body1" align="right">
+              Address Type Ahead lookup API is powered by
+              <a href="https://harmonyrightaddress.com" target="_blank" rel="noopener noreferrer" >
+                <img className="responsive-img" src="HARMONYRightAddressSmall.png" alt="Harmony RightAddress" />
+              </a>
+            </Typography>
+
+            <AutoCompleteAddress />
 
           </Paper>
         </Grid>
