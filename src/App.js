@@ -57,7 +57,7 @@ function ButtonAppBar(props) {
               <HomeIcon />
             </IconButton>
             <Typography variant="h6" color="inherit">
-              AddressLab
+              AddressLabs
             </Typography>
 
             <ToolbarMenu
