@@ -16,76 +16,19 @@
     </style>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <!-- Materialize is compatible with jQuery3 -->
-    <!-- import jQuery before materialize.js -->
 
     <!-- Materialize -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
-    <link  rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <!-- Materialize sidenav -->
-    <script>
-        $(document).ready(function(){
-          $('.sidenav').sidenav();
-        });
-    </script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <!-- Materialize -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet">
-
   
-    <!-- you can download the following js from our website -->
+    <!-- harmony -->
     <script src="https://s3-ap-southeast-2.amazonaws.com/common.mastersoftgroup.com/scripts/harmony-1.6.7.min.js" type="text/javascript"></script>
     <script src="https://s3-ap-southeast-2.amazonaws.com/common.mastersoftgroup.com/scripts/harmony-ui-1.6.7.min.js" type="text/javascript"></script>
-    
-    <script>
-      $(function() {
-        // Use the environment based on the site it is on
-        Harmony.useEnv("https://preview-hosted.mastersoftgroup.com");
-    
-        // Init the client with the demo api user name and credential
-        // We have created the following user and credential which you can use on localhost
-        Harmony.init("aluser", "PlzXiWxqUGxGOx5r2pScje2QieaExbV8", Harmony.AUSTRALIA);
-    
-        // Use the JSONP protocol
-        Harmony.useProtocol(Harmony.JSONP);
-    
-        var opt = {
-          // min 3 chars to trigger the lookup
-          minLength:3,
-          // skip transaction call when address selected. You need to make your own call depending on your business flow.
-          skipTransaction: false,
-          // define your own call back function when address selected.
-          onSelect: function(event, ui) {
-              console.log('GNAF PID : ' + ui.item.id);
-              console.log('Address  : ' + ui.item.fullAddress);
-              console.log('Subdwelling : ' + ui.item.subdwelling);
-              console.log('Postcode    : ' + ui.item.postcode);
-              console.log('Longitude   : ' + ui.item.attributes.Longitude);
-              console.log('Latitude    : ' + ui.item.attributes.Latitude);
-              $("#longitude").val(ui.item.attributes.Longitude);
-              $("#latitude").val(ui.item.attributes.Latitude);
-              document.getReportForm.postcode.value=ui.item.postcode;
-              document.getReportForm.longitude.value=ui.item.attributes.Longitude;
-              document.getReportForm.latitude.value=ui.item.attributes.Latitude;
-              document.getReportForm.fullAddress.value=ui.item.fullAddress;
-          }
-        };
-    
-        // Configure the address lookup.
-        // "#rapidAddress" is referring to the input address element id
-        Harmony.UI.addressLookup($("#rapidAddress"), "GNAF", opt);
-        Harmony.UI.addField(Harmony.ID, $("#HRA_ID"));
-        Harmony.UI.addField(Harmony.SUBDWELLING, $("#flatNumber"));
-        Harmony.UI.addField(Harmony.STREET_NUMBER, $("#streetNumber"));
-        Harmony.UI.addField(Harmony.STREET_NAME, $("#streetName"));
-        Harmony.UI.addField(Harmony.STREET_TYPE, $("#streetType"));
-        Harmony.UI.addField(Harmony.POSTCODE, $("#postcode"));
-        Harmony.UI.addField(Harmony.LOCALITY, $("#suburb"));
-        Harmony.UI.addField(Harmony.STATE, $("#state"));
-      });
-    
-    </script>
+    <script src="autoComplete.js"></script>
 
     <div id="root"></div>
 
