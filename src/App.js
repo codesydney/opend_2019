@@ -1,4 +1,5 @@
 import React from "react";
+import { createContext, useState } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -11,6 +12,10 @@ import { Button, MenuItem } from "@material-ui/core";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import Home from './components/Home';
 import Report from './components/Report';
+
+const defaultAddress={ id: '0', subdwelling: '', streetNumber: '', streetName: '', streetType: '', locality: '', 
+  state: '', postcode: '', fullAddress: '', attributes: {Longitude: '151.2093', Latitude: '-33.8688'} };
+export const MyContext = createContext(null);
 
 const styles = {
   root: {
@@ -26,6 +31,13 @@ const styles = {
 };
 
 function ButtonAppBar(props) {
+  const [address, setAddress] = useState(defaultAddress);
+
+  const updateAddress = (newAddress) => {
+    setAddress(newAddress);
+  }
+
+
   const { classes } = props;
   function onLogin() {
     alert("Login TBD");
@@ -35,7 +47,8 @@ function ButtonAppBar(props) {
   }
 
   return (
-    <BrowserRouter>
+    <MyContext.Provider value={{address, updateAddress}} >
+      <BrowserRouter>
       <div className="App">
 
         <AppBar position="fixed">
@@ -77,6 +90,7 @@ function ButtonAppBar(props) {
         </Switch>
       </div>
     </BrowserRouter>
+    </MyContext.Provider>
   );
 }
 

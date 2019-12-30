@@ -1,15 +1,18 @@
 import React from "react";
+import { useContext } from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import fetchJsonp from "fetch-jsonp";
+import { MyContext } from "../App";
 
-const API_URL="https://preview-hosted.mastersoftgroup.com/harmony/rest/au/address?sourceOfTruth=GNAF&transactionID=a53d240365e6b75d65f5bf70d951289f&Authorization=Basic%20YWx1c2VyOlBselhpV3hxVUd4R094NXIycFNjamUyUWllYUV4YlY4";
 export default function MyAutocomplete() {
-  //const [open, setOpen] = React.useState(false);
+
+  const API_URL="https://preview-hosted.mastersoftgroup.com/harmony/rest/au/address?sourceOfTruth=GNAF&transactionID=a53d240365e6b75d65f5bf70d951289f&Authorization=Basic%20YWx1c2VyOlBselhpV3hxVUd4R094NXIycFNjamUyUWllYUV4YlY4";
+  const { address, updateAddress } = useContext(MyContext);
+
   const [options, setOptions] = React.useState([]);
   const [query, setQuery] = React.useState("");
-  const [searchAddress, setSearchAddress] = React.useState({});
   //  const loading = open && options.length === 0;
   const loading = false;
 
@@ -38,7 +41,7 @@ export default function MyAutocomplete() {
 
   const handleOptionChange = (event, value) => {
     console.log("optionchange=", event.target.value, value);
-    setSearchAddress(value);
+    updateAddress(value);
   };
 
   return (

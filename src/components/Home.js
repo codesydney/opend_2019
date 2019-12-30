@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
-//import { connect } from 'react-redux'
-import { AutoCompleteAddress } from './AutoCompleteAddress';
 import MyAutocomplete from './MyAutocomplete';
 
 import HomeMap from './HomeMap';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Paper, Typography, Box, CardMedia, Card, CardContent } from '@material-ui/core';
-import EditIcon from "@material-ui/icons/Edit";
 import HomeInfo from "./HomeInfo";
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     padding: 20,
-    marginTop: 100
+    marginTop: 50
   },
   paper: {
     padding: theme.spacing(2),
@@ -46,7 +43,7 @@ export default function Home() {
           <Paper className={classes.paper}>
             <Typography component="div">
               <Box fontStyle="normal" fontSize="h5.fontSize" fontWeight="fontWeightBold" m={1}>
-                Address Labs
+                AddressLab
               </Box>
               <Box fontStyle="normal" m={1}>
                 Community Contributed Open Datasets for Australian Addresses
@@ -80,7 +77,7 @@ export default function Home() {
         </Grid>
         <Grid item xs={12} md={8}>
           <Paper className={classes.paper}>
-            <HomeMap name="HomeMap" lat="-33.8688" lng="151.2093" zoom="16" />
+            <HomeMap />
           </Paper>
         </Grid>
 

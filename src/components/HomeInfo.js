@@ -1,26 +1,20 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import { TextField, Button} from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
 
-export default class HomeInfo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      lat: props.lat, //-33.8688,
-      lng: props.lng, //151.2093,
-      zoom: props.zoom //16
-    };
-  }
+import { MyContext } from "../App";
 
-  render() {
-    const position = [this.state.lat, this.state.lng];
+export default function HomeInfo() {
+  const { address, updateAddress } = useContext(MyContext);
+
+    //const position = [this.state.lat, this.state.lng];
     return (
       <Fragment>
         <form>
           <TextField
             id="HRA_ID"
             label="GNAF PID"
-            value="ID (DPID or GNAF PID)"
+            value={address.id}
             disabled
             fullWidth
             InputLabelProps={{ shrink: true }}
@@ -29,6 +23,7 @@ export default class HomeInfo extends React.Component {
           <TextField
             id="flatNumber"
             label="Subdwelling"
+            value={address.subdwelling}
             disabled
             fullWidth
             InputLabelProps={{ shrink: true }}
@@ -37,6 +32,7 @@ export default class HomeInfo extends React.Component {
           <TextField
             id="streetNumber"
             label="Street number"
+            value={address.streetNumber}
             disabled
             fullWidth
             InputLabelProps={{ shrink: true }}
@@ -45,6 +41,7 @@ export default class HomeInfo extends React.Component {
           <TextField
             id="streetName"
             label="Street name"
+            value={address.streetName}
             disabled
             fullWidth
             InputLabelProps={{ shrink: true }}
@@ -53,6 +50,7 @@ export default class HomeInfo extends React.Component {
           <TextField
             id="streetType"
             label="Street type"
+            value={address.streetType}
             disabled
             fullWidth
             InputLabelProps={{ shrink: true }}
@@ -61,6 +59,7 @@ export default class HomeInfo extends React.Component {
           <TextField
             id="suburb"
             label="Suburb"
+            value={address.locality}
             disabled
             fullWidth
             InputLabelProps={{ shrink: true }}
@@ -69,6 +68,7 @@ export default class HomeInfo extends React.Component {
           <TextField
             id="state"
             label="State"
+            value={address.state}
             disabled
             fullWidth
             InputLabelProps={{ shrink: true }}
@@ -77,6 +77,7 @@ export default class HomeInfo extends React.Component {
           <TextField
             id="postcode"
             label="Postcode"
+            value={address.postcode}
             disabled
             fullWidth
             InputLabelProps={{ shrink: true }}
@@ -85,6 +86,7 @@ export default class HomeInfo extends React.Component {
           <TextField
             id="longitude"
             label="Longitude"
+            value={address.attributes.Longitude}
             disabled
             fullWidth
             InputLabelProps={{ shrink: true }}
@@ -93,6 +95,7 @@ export default class HomeInfo extends React.Component {
           <TextField
             id="latitude"
             label="Latitude"
+            value={address.attributes.Latitude}
             disabled
             fullWidth
             InputLabelProps={{ shrink: true }}
@@ -118,5 +121,4 @@ export default class HomeInfo extends React.Component {
       </Fragment>
 
     );
-  }
 }
