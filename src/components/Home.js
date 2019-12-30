@@ -43,7 +43,7 @@ export default function Home() {
           <Paper className={classes.paper}>
             <Typography component="div">
               <Box fontStyle="normal" fontSize="h5.fontSize" fontWeight="fontWeightBold" m={1}>
-                AddressLab
+                AddressLabs
               </Box>
               <Box fontStyle="normal" m={1}>
                 Community Contributed Open Datasets for Australian Addresses
